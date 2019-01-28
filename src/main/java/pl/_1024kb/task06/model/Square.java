@@ -1,10 +1,24 @@
 package pl._1024kb.task06.model;
 
-public class Square extends Shape
+import pl._1024kb.task06.api.Shape;
+import pl._1024kb.task06.exception.NotPositiveNumberException;
+import pl._1024kb.task06.validator.LengthValidator;
+
+public class Square implements Shape
 {
+    protected double lengthA;
+    protected LengthValidator lengthValidator = LengthValidator.getInstance();
+
     public Square(double lengthA)
     {
-        super(lengthA);
+        this.lengthA = lengthA;
+        try
+        {
+            lengthValidator.checkProperNumberValue(lengthA);
+        } catch (NotPositiveNumberException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

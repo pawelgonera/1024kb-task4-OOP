@@ -1,6 +1,8 @@
 package pl._1024kb.task06.model;
 
-public class Rectangle extends Shape
+import pl._1024kb.task06.exception.NotPositiveNumberException;
+
+public class Rectangle extends Square
 {
     protected double lengthB;
 
@@ -8,7 +10,13 @@ public class Rectangle extends Shape
     {
         super(lengthA);
         this.lengthB = lengthB;
-        checkLengthValid(lengthB);
+        try
+        {
+            lengthValidator.checkProperNumberValue(lengthB);
+        } catch (NotPositiveNumberException e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import pl._1024kb.task06.model.Shape;
+import pl._1024kb.task06.api.Shape;
 import pl._1024kb.task06.model.Square;
 
 public class SquareTest implements ShapeTest

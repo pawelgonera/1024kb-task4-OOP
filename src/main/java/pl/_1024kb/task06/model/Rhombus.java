@@ -1,6 +1,8 @@
 package pl._1024kb.task06.model;
 
-public class Rhombus extends Shape
+import pl._1024kb.task06.exception.NotPositiveNumberException;
+
+public class Rhombus extends Square
 {
     private double height;
 
@@ -8,7 +10,14 @@ public class Rhombus extends Shape
     {
         super(lengthA);
         this.height = height;
-        checkLengthValid(height);
+        try
+        {
+            lengthValidator.checkProperNumberValue(height);
+        } catch (NotPositiveNumberException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
     @Override

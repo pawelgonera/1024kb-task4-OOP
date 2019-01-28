@@ -1,5 +1,6 @@
 package pl._1024kb.task06;
 
+import pl._1024kb.task06.api.Shape;
 import pl._1024kb.task06.model.*;
 
 public class Main
