@@ -7,12 +7,13 @@ import pl._1024kb.task06.validator.TriangleValidator;
 public class Triangle extends Rectangle
 {
     private double lengthC;
-    private TriangleValidator trianleValidator = TriangleValidator.getInstance();
+    private TriangleValidator triangleValidator = TriangleValidator.getInstance();
 
     public Triangle(double lengthA, double lengthB, double lengthC)
     {
         super(lengthA, lengthB);
         this.lengthC = lengthC;
+
         try
         {
             lengthValidator.checkProperNumberValue(lengthC);
@@ -21,7 +22,16 @@ public class Triangle extends Rectangle
             e.printStackTrace();
         }
 
-        checkTriangleValid(lengthA, lengthB, lengthC);
+        try
+        {
+            if(checkTriangleValid(lengthA, lengthB, lengthC))
+                System.out.println("Można stworzyć trójkat");
+
+        }catch (IsNotTriangleException e)
+        {
+            throw new IsNotTriangleException("Nie można stworzyć trójkąta");
+        }
+
     }
 
     @Override
@@ -40,20 +50,15 @@ public class Triangle extends Rectangle
     {
         double halfCircuit = getCircuit() / 2;
 
-        return halfCircuit*(halfCircuit - lengthA) * (halfCircuit - lengthB) * (halfCircuit - lengthC);
+        return halfCircuit * (halfCircuit - lengthA) * (halfCircuit - lengthB) * (halfCircuit - lengthC);
     }
 
-    private void checkTriangleValid(double lengthA, double lengthB, double lengthC)
+    private boolean checkTriangleValid(double lengthA, double lengthB, double lengthC) throws IsNotTriangleException
     {
-        try
-        {
-            boolean isTriangle = trianleValidator.checkIsTriangle(lengthA, lengthB, lengthC);
-            if(isTriangle)
-                System.out.println("Można stworzyć trójkąt");
-
-        } catch (IsNotTriangleException e)
-        {
-            e.printStackTrace();
-        }
+        boolean isTriangle = triangleValidator.checkIsTriangle(lengthA, lengthB, lengthC);
+        if (isTriangle)
+            return true;
+        else
+            return false;
     }
 }

@@ -17,7 +17,7 @@ public class Main
         System.out.println("Obwód prostokąta: " + rectangle.getCircuit());
         System.out.println("**************************************");
 
-        Shape triangle = new Triangle(4.5, 3, 2.5);
+        Shape triangle = new Triangle(4.5, 2.5, 2.5);
         System.out.println("Pole trójkąta: " + triangle.getArea());
         System.out.println("Obwód trójkąta: " + triangle.getCircuit());
         System.out.println("**************************************");

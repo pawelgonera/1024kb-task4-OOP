@@ -6,9 +6,16 @@ public class LengthValidator
 {
     private static LengthValidator instance;
 
+    private LengthValidator()
+    {
+        if(instance != null)
+            throw new IllegalStateException("Cannot create new instance, use getInstance");
+    }
+
     public static LengthValidator getInstance()
     {
-        instance = new LengthValidator();
+        if(instance == null)
+            instance = new LengthValidator();
 
         return instance;
     }

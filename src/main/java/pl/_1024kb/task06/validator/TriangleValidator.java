@@ -6,9 +6,16 @@ public class TriangleValidator
 {
     private static TriangleValidator instance;
 
+    private TriangleValidator()
+    {
+        if(instance != null)
+            throw new IllegalStateException("Cannot create new instance, use getInstance");
+    }
+
     public static TriangleValidator getInstance()
     {
-        instance = new TriangleValidator();
+        if(instance == null)
+            instance = new TriangleValidator();
 
         return instance;
     }
