@@ -1,18 +1,22 @@
 package pl._1024kb.task06.model;
 
+import pl._1024kb.task06.api.Figure;
 import pl._1024kb.task06.exception.NotPositiveNumberException;
+import pl._1024kb.task06.validator.LengthValidator;
 
-public class Rectangle extends Square
+public class Rectangle implements Figure
 {
-    protected double lengthB;
+    private double lengthA;
+    private double lengthB;
+
 
     public Rectangle(double lengthA, double lengthB)
     {
-        super(lengthA);
+        this.lengthA = lengthA;
         this.lengthB = lengthB;
         try
         {
-            lengthValidator.checkProperNumberValue(lengthB);
+            LengthValidator.checkProperNumberValue(lengthA, lengthB);
         } catch (NotPositiveNumberException e)
         {
             e.printStackTrace();

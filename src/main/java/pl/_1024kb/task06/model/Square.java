@@ -1,20 +1,19 @@
 package pl._1024kb.task06.model;
 
-import pl._1024kb.task06.api.Shape;
+import pl._1024kb.task06.api.Figure;
 import pl._1024kb.task06.exception.NotPositiveNumberException;
 import pl._1024kb.task06.validator.LengthValidator;
 
-public class Square implements Shape
+public class Square implements Figure
 {
-    protected double lengthA;
-    protected LengthValidator lengthValidator = LengthValidator.getInstance();
+    private double lengthA;
 
     public Square(double lengthA)
     {
         this.lengthA = lengthA;
         try
         {
-            lengthValidator.checkProperNumberValue(lengthA);
+            LengthValidator.checkProperNumberValue(lengthA);
         } catch (NotPositiveNumberException e)
         {
             e.printStackTrace();

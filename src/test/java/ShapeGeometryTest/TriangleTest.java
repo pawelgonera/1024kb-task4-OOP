@@ -2,19 +2,25 @@ package ShapeGeometryTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pl._1024kb.task06.model.Triangle;
+import pl._1024kb.task06.api.Figure;
+import pl._1024kb.task06.factory.GeometryFactory;
+import pl._1024kb.task06.factory.TriangleFigure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TriangleTest implements ShapeTest
 {
-    private Triangle triangle;
+    private Figure triangle;
 
     @BeforeEach
     void setUp()
     {
-        triangle = new Triangle(4, 6, 5);
+        GeometryFactory geometryFactory = new TriangleFigure();
+        geometryFactory.setLengthA(4);
+        geometryFactory.setLengthB(6);
+        geometryFactory.setLengthC(5);
+        triangle = geometryFactory.createFigure();
     }
 
     @Test

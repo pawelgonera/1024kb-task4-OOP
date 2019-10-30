@@ -3,19 +3,23 @@ package ShapeGeometryTest;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import pl._1024kb.task06.model.Rectangle;
+import pl._1024kb.task06.api.Figure;
+import pl._1024kb.task06.factory.GeometryFactory;
+import pl._1024kb.task06.factory.RectangleFigure;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RectangleTest implements ShapeTest
 {
-    private Rectangle rectangle;
+    private Figure rectangle;
 
     @BeforeEach
     void setUp()
     {
-
-        rectangle = new Rectangle(4, 3);
+        GeometryFactory geometryFactory = new RectangleFigure();
+        geometryFactory.setLengthA(4);
+        geometryFactory.setLengthB(3);
+        rectangle = geometryFactory.createFigure();
     }
 
     @Test()

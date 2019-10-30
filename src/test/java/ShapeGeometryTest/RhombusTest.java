@@ -2,19 +2,24 @@ package ShapeGeometryTest;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import pl._1024kb.task06.model.Rhombus;
+import pl._1024kb.task06.api.Figure;
+import pl._1024kb.task06.factory.GeometryFactory;
+import pl._1024kb.task06.factory.RhombusFigure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class RhombusTest implements ShapeTest
 {
-    private Rhombus rhombus;
+    private Figure rhombus;
 
     @BeforeEach
     void setUp()
     {
-        rhombus = new Rhombus(4, 3);
+        GeometryFactory geometryFactory = new RhombusFigure();
+        geometryFactory.setLengthA(4);
+        geometryFactory.setHeight(3);
+        rhombus = geometryFactory.createFigure();
     }
 
     @Test

@@ -1,37 +1,36 @@
 package pl._1024kb.task06.model;
 
+import pl._1024kb.task06.api.Figure;
 import pl._1024kb.task06.exception.IsNotTriangleException;
 import pl._1024kb.task06.exception.NotPositiveNumberException;
+import pl._1024kb.task06.validator.LengthValidator;
 import pl._1024kb.task06.validator.TriangleValidator;
 
-public class Triangle extends Rectangle
+public class Triangle implements Figure
 {
+    private double lengthA;
+    private double lengthB;
     private double lengthC;
-    private TriangleValidator triangleValidator = TriangleValidator.getInstance();
 
     public Triangle(double lengthA, double lengthB, double lengthC)
     {
-        super(lengthA, lengthB);
+        this.lengthA = lengthA;
+        this.lengthB = lengthB;
         this.lengthC = lengthC;
 
         try
         {
-            lengthValidator.checkProperNumberValue(lengthC);
-        } catch (NotPositiveNumberException e)
-        {
-            e.printStackTrace();
-        }
+            LengthValidator.checkProperNumberValue(lengthA, lengthB, lengthC);
 
-        try
-        {
             if(checkTriangleValid(lengthA, lengthB, lengthC))
                 System.out.println("Można stworzyć trójkat");
 
         }catch (IsNotTriangleException e)
         {
             throw new IsNotTriangleException("Nie można stworzyć trójkąta");
+        } catch (NotPositiveNumberException e) {
+            e.printStackTrace();
         }
-
     }
 
     @Override
@@ -55,10 +54,6 @@ public class Triangle extends Rectangle
 
     private boolean checkTriangleValid(double lengthA, double lengthB, double lengthC) throws IsNotTriangleException
     {
-        boolean isTriangle = triangleValidator.checkIsTriangle(lengthA, lengthB, lengthC);
-        if (isTriangle)
-            return true;
-        else
-            return false;
+        return TriangleValidator.checkIsTriangle(lengthA, lengthB, lengthC);
     }
 }

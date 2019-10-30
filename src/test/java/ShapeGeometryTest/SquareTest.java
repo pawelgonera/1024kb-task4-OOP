@@ -4,17 +4,21 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-import pl._1024kb.task06.api.Shape;
-import pl._1024kb.task06.model.Square;
+import pl._1024kb.task06.api.Figure;
+import pl._1024kb.task06.factory.GeometryFactory;
+import pl._1024kb.task06.factory.SquareFigure;
+
 
 public class SquareTest implements ShapeTest
 {
-    private Shape square;
+    private Figure square;
 
     @BeforeEach
     void setUp()
     {
-        square = new Square(4);
+        GeometryFactory geometryFactory = new SquareFigure();
+        geometryFactory.setLengthA(4);
+        square = geometryFactory.createFigure();
     }
 
     @Test
